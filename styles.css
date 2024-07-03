@@ -33,6 +33,7 @@ input[type="text"] {
     justify-content: center;
     gap: 10px;
     width: 100%;
+    flex-wrap: wrap;
 }
 input[type="button"] {
     padding: 10px 20px;
@@ -42,10 +43,8 @@ input[type="button"] {
     cursor: pointer;
     background-color: #4CAF50;
     color: white;
-    margin: 10px 5px;
-    flex: 1;
-    /*max-width: 200px;*/
     text-align: center;
+    flex: 0 1 auto;
 }
 input[type="button"]:hover {
     background-color: #45a049;
