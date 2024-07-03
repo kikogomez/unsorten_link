@@ -10,14 +10,20 @@
     <h1>Desenmascara tu Enlace</h1>
     <form id="expandForm" onsubmit="event.preventDefault(); expandURL();">
         <input type="text" id="shortUrl" placeholder="Introduce la URL acortada" required>
-        <select id="serviceSelector">
-            <option value="unshortenme">unshorten.me</option>
-            <!--<option value="unshortenlink">unshorten.link</option>-->
-            <!--<option value="checkshorturl">checkshorturl.com</option>-->
-            <!--<option value="longurl">longurl.org</option>-->
-            <!--<option value="expandurl">expandurl.com</option>-->
-            <!--<option value="bitly">bit.ly</option>-->
-        </select>
+        
+        <!-- Nuevo contenedor para el selector de servicio con el título -->
+        <div class="selector-container">
+            <label for="serviceSelector" class="api-raw-label">Select service API</label>
+            <select id="serviceSelector">
+                <option value="unshortenme">unshorten.me</option>
+                <!--<option value="unshortenlink">unshorten.link</option>-->
+                <!--<option value="checkshorturl">checkshorturl.com</option>-->
+                <!--<option value="longurl">longurl.org</option>-->
+                <!--<option value="expandurl">expandurl.com</option>-->
+                <!--<option value="bitly">bit.ly</option>-->
+            </select>
+        </div>
+        
         <input type="button" value="Desenmascarar" onclick="expandURL()">
     </form>
     <div id="result"></div>
@@ -27,6 +33,7 @@
     </div>
 
     <script src="expand.js"></script>
+    <script src="async_direct_expand.js"></script>
 </body>
 </html>
 

@@ -6,11 +6,19 @@ function expandURL() {
     let apiUrl = '';
 
     switch(service) {
+ /*       case 'direct':
+            apiUrl = `${encodeURIComponent(shortUrl)}`;
+            expandField = '';
+            break;*/
         case 'unshortenme':
             apiUrl = `https://unshorten.me/json/${encodeURIComponent(shortUrl)}`;
             expandField = 'resolved_url';
             break;
- /*       case 'unshortenlink':
+ /*       case 'expandurl':
+            apiUrl = `https://expandurl.com/api/v1?url=${encodeURIComponent(shortUrl)}`;
+            expandField = 'long_url';
+            break;
+        case 'unshortenlink':
             apiUrl = `https://api.unshorten.link/?url=${encodeURIComponent(shortUrl)}`;
             expandField = 'unshortened_url';
             break;
@@ -21,10 +29,6 @@ function expandURL() {
         case 'longurl':
             apiUrl = `http://api.longurl.org/v2/expand?url=${encodeURIComponent(shortUrl)}`;
             expandField = 'long-url';
-            break;
-        case 'expandurl':
-            apiUrl = `https://expandurl.com/api/v1/expand?url=${encodeURIComponent(shortUrl)}`;
-            expandField = 'destination_url';
             break;
         case 'bitly':
             apiUrl = 'https://api-ssl.bitly.com/v4/expand';
@@ -55,19 +59,21 @@ function expandURL() {
             return;
     }
 
+
     fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            rawResponseTextarea.value = JSON.stringify(data, null, 2);
-            if (data[expandField]) {
-                const originalUrl = data[expandField];
-                resultDiv.innerHTML = `<strong>URL Original:</strong> <a href="${originalUrl}" target="_blank">${originalUrl}</a>`;
-            } else {
-                resultDiv.innerHTML = `<strong>Error:</strong> No se pudo expandir la URL. Verifica que la URL acortada sea correcta.`;
-            }
-        })
-        .catch(error => {
-            rawResponseTextarea.value = error.toString();
-            resultDiv.innerHTML = `<strong>Error:</strong> Ocurrió un problema al intentar expandir la URL.`;
-        });
+    .then(response => response.json())
+    .then(data => {
+        rawResponseTextarea.value = JSON.stringify(data, null, 2);
+        if (data[expandField]) {
+            const originalUrl = data[expandField];
+            resultDiv.innerHTML = `<strong>URL Original:</strong> <a href="${originalUrl}" target="_blank">${originalUrl}</a>`;
+        } else {
+            resultDiv.innerHTML = `<strong>Error:</strong> No se pudo expandir la URL. Verifica que la URL acortada sea correcta.`;
+        }
+    })
+    .catch(error => {
+        rawResponseTextarea.value = error.toString();
+        resultDiv.innerHTML = `<strong>Error:</strong> Ocurrió un problema al intentar expandir la URL.`;
+    });
+        
 }

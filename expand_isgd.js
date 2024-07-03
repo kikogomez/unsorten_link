@@ -1,3 +1,4 @@
+/*Not working API*/
 function expandWithIsGd() {
     const shortUrl = document.getElementById('shortUrl').value;
     const resultDiv = document.getElementById('result');

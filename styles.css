@@ -48,6 +48,9 @@ input[type="button"]:hover {
     width: 300px;
     text-align: center;
     border-radius: 5px;
+    min-height: 50px; /* Mínima altura para el campo de resultado */
+    height: auto; /* Permite que el alto se ajuste automáticamente */
+    overflow-wrap: break-word; /* Asegura que las palabras largas se dividan */
 }
 .textarea-container {
     display: flex;
@@ -65,6 +68,15 @@ input[type="button"]:hover {
 }
 #rawResponse {
     width: 100%;
+    max-width: 300px; /* Asegura que el textarea tenga el mismo ancho que el input de texto */
+}
+
+/* Estilos para el contenedor del selector de servicio */
+.selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
     max-width: 300px;
-    margin-top: 5px; 
+    margin-top: 10px;
 }

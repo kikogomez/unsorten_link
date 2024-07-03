@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expandir URL</title>
+</head>
+<body>
+    <h1>Expandir URL</h1>
+    <form id="expand-form">
+        <label for="short-url">URL Corta:</label>
+        <input type="text" id="short-url" name="short-url" required>
+        <button type="submit">Expandir</button>
+    </form>
+    <p>URL Larga: <span id="long-url"></span></p>
+
+    <script>
+        document.getElementById('expand-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const shortUrl = document.getElementById('short-url').value;
+            try {
+                const response = await fetch(`http://localhost:3000/expand?url=${encodeURIComponent(shortUrl)}`);
+                const data = await response.json();
+                if (data.longUrl) {
+                    document.getElementById('long-url').textContent = data.longUrl;
+                } else {
+                    document.getElementById('long-url').textContent = 'No se encontró una redirección';
+                }
+            } catch (error) {
+                document.getElementById('long-url').textContent = 'Error: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html>

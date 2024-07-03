@@ -1,0 +1,18 @@
+Explicación del Código
+Servidor Proxy (proxy.js):
+
+Usa Express para crear un servidor web.
+Configura CORS para permitir solicitudes desde cualquier origen.
+Define una ruta /expand que toma una URL corta como parámetro de consulta, realiza una solicitud HEAD a esa URL, y responde con la URL larga desde el encabezado Location.
+Maneja errores y respuestas apropiadamente.
+Página Web (index.html):
+
+Similar a la versión anterior, pero ahora realiza una solicitud a nuestro servidor proxy en lugar de directamente a la URL corta.
+El formulario envía una solicitud a http://localhost:3000/expand con la URL corta como parámetro de consulta.
+La respuesta de la solicitud se maneja para mostrar la URL larga en el elemento span.
+Instrucciones para Ejecutar
+Asegúrate de tener Node.js instalado.
+Guarda el archivo proxy.js y ejecuta npm install express node-fetch cors para instalar las dependencias necesarias.
+Ejecuta node proxy.js para iniciar el servidor proxy.
+Abre index.html en tu navegador web.
+Ingresa una URL corta en el formulario y haz clic en "Expandir" para ver la URL larga.
