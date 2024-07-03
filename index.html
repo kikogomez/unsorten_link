@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenmascara tu Enlace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+        }
+        input[type="button"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            margin: 10px 5px;
+            flex: 1;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            width: 300px;
+            text-align: center;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desenmascara tu Enlace</h1>
+    <form id="expandForm">
+        <input type="text" id="shortUrl" placeholder="Introduce la URL acortada" required>
+        <div class="button-container">
+            <input type="button" value="Expandir con is.gd" onclick="expandUrl('isgd')">
+            <input type="button" value="Expandir con unshorten.me" onclick="expandUrl('unshortenme')">
+        </div>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function expandUrl(service) {
+            const shortUrl = document.getElementById('shortUrl').value;
+            const resultDiv = document.getElementById('result');
+            let apiUrl = '';
+
+            if (service === 'isgd') {
+                apiUrl = `https://is.gd/forward.php?shorturl=${shortUrl}&format=simple`;
+            } else if (service === 'unshortenme') {
+                apiUrl = `https://unshorten.me/json/${shortUrl}`;
+            }
+
+            fetch(apiUrl)
+                .then(response => service === 'isgd' ? response.text() : response.json())
+                .then(data => {
+                    if (service === 'isgd') {
+                        if (data.includes('http')) {
+                            resultDiv.innerHTML = `<strong>URL Original:</strong> <a href="${data}" target="_blank">${data}</a>`;
+                        } else {
+                            resultDiv.innerHTML = `<strong>Error:</strong> No se pudo expandir la URL. Verifica que la URL acortada sea correcta.`;
+                        }
+                    } else if (service === 'unshortenme') {
+                        if (data.success && data.resolved_url) {
+                            resultDiv.innerHTML = `<strong>URL Original:</strong> <a href="${data.resolved_url}" target="_blank">${data.resolved_url}</a>`;
+                        } else {
+                            resultDiv.innerHTML = `<strong>Error:</strong> No se pudo expandir la URL. Verifica que la URL acortada sea correcta.`;
+                        }
+                    }
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<strong>Error:</strong> Ocurrió un problema al intentar expandir la URL.`;
+                });
+        }
+    </script>
+</body>
+</html>
