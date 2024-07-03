@@ -11,14 +11,14 @@
     <form id="expandForm">
         <input type="text" id="shortUrl" placeholder="Introduce la URL acortada" required>
         <div class="button-container">
-            <input type="button" value="Expandir con is.gd" onclick="expandWithIsGd()">
             <input type="button" value="Expandir con unshorten.me" onclick="expandWithUnshortenMe()">
+            <input type="button" value="Expandir con unshorten.link" onclick="expandWithUnshortenLink()">
         </div>
     </form>
     <div id="result"></div>
     <textarea id="rawResponse" rows="10" cols="50" readonly style="margin-top: 20px;"></textarea>
 
-    <script src="expand_isgd.js"></script>
     <script src="expand_unshortenme.js"></script>
+    <script src="expand_unshortenlink.js"></script>
 </body>
 </html>
