@@ -49,6 +49,15 @@ input[type="button"] {
 input[type="button"]:hover {
     background-color: #45a049;
 }
+
+.api-raw-label {
+    font-size: 0.9em;
+    color: #888;
+    font-style: italic;
+    margin-top: 20px;
+    align-self: flex-start; /* Alinea el texto a la izquierda */
+}
+
 #result {
     margin-top: 20px;
     padding: 10px;
