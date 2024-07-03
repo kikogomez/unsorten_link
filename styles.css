@@ -27,10 +27,12 @@ input[type="text"] {
     border-radius: 5px;
     font-size: 16px;
 }
+}
 .button-container {
     display: flex;
-    justify-content: space-between;
-    width: 300px;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
 }
 input[type="button"] {
     padding: 10px 20px;
@@ -42,6 +44,8 @@ input[type="button"] {
     color: white;
     margin: 10px 5px;
     flex: 1;
+    max-width: 200px;
+    text-align: center;
 }
 input[type="button"]:hover {
     background-color: #45a049;
