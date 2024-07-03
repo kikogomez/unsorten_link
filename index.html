@@ -8,18 +8,23 @@
 </head>
 <body>
     <h1>Desenmascara tu Enlace</h1>
-    <form id="expandForm">
+    <form id="expandForm" onsubmit="event.preventDefault(); expandURL();">
         <input type="text" id="shortUrl" placeholder="Introduce la URL acortada" required>
-        <div class="button-container">
-            <input type="button" value="Expandir con unshorten.me" onclick="expandWithUnshortenMe()">
-            <input type="button" value="Expandir con unshorten.link" onclick="expandWithUnshortenLink()">
-        </div>
+        <select id="serviceSelector">
+            <option value="unshortenme">unshorten.me</option>
+            <option value="unshortenlink">unshorten.link</option>
+            <option value="checkshorturl">checkshorturl.com</option>
+            <option value="longurl">longurl.org</option>
+            <option value="expandurl">expandurl.com</option>
+            <option value="bitly">bit.ly</option>
+        </select>
+        <input type="button" value="Desenmascarar" onclick="expandURL()">
     </form>
     <div id="result"></div>
     <label for="rawResponse" class="api-raw-label">API raw answer</label>
-    <textarea id="rawResponse" rows="10" cols="50" readonly style="margin-top: 20px;"></textarea>
+    <textarea id="rawResponse" rows="10" cols="50" readonly style="margin-top: 5px;"></textarea>
 
-    <script src="expand_unshortenme.js"></script>
-    <script src="expand_unshortenlink.js"></script>
+    <script src="expand.js"></script>
 </body>
 </html>
+
