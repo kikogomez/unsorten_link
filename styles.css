@@ -19,21 +19,13 @@ form {
     flex-direction: column;
     align-items: center;
 }
-input[type="text"] {
+input[type="text"], select {
     width: 300px;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-}
-}
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    flex-wrap: wrap;
 }
 input[type="button"] {
     padding: 10px 20px;
@@ -43,21 +35,11 @@ input[type="button"] {
     cursor: pointer;
     background-color: #4CAF50;
     color: white;
-    text-align: center;
-    flex: 0 1 auto;
+    margin: 10px 0;
 }
 input[type="button"]:hover {
     background-color: #45a049;
 }
-
-.api-raw-label {
-    font-size: 0.9em;
-    color: #888;
-    font-style: italic;
-    margin-top: 20px;
-    align-self: flex-start; /* Alinea el texto a la izquierda */
-}
-
 #result {
     margin-top: 20px;
     padding: 10px;
@@ -67,3 +49,15 @@ input[type="button"]:hover {
     text-align: center;
     border-radius: 5px;
 }
+.api-raw-label {
+    font-size: 0.9em;
+    color: #888;
+    font-style: italic;
+    margin-top: 20px;
+    align-self: flex-start;
+}
+#rawResponse {
+    width: 100%;
+    max-width: 300px;
+}
+
