@@ -12,17 +12,19 @@
         <input type="text" id="shortUrl" placeholder="Introduce la URL acortada" required>
         <select id="serviceSelector">
             <option value="unshortenme">unshorten.me</option>
-            <option value="unshortenlink">unshorten.link</option>
-            <option value="checkshorturl">checkshorturl.com</option>
-            <option value="longurl">longurl.org</option>
-            <option value="expandurl">expandurl.com</option>
-            <option value="bitly">bit.ly</option>
+            <!--<option value="unshortenlink">unshorten.link</option>-->
+            <!--<option value="checkshorturl">checkshorturl.com</option>-->
+            <!--<option value="longurl">longurl.org</option>-->
+            <!--<option value="expandurl">expandurl.com</option>-->
+            <!--<option value="bitly">bit.ly</option>-->
         </select>
         <input type="button" value="Desenmascarar" onclick="expandURL()">
     </form>
     <div id="result"></div>
-    <label for="rawResponse" class="api-raw-label">API raw answer</label>
-    <textarea id="rawResponse" rows="10" cols="50" readonly style="margin-top: 5px;"></textarea>
+    <div class="textarea-container">
+        <label for="rawResponse" class="api-raw-label">API raw answer</label>
+        <textarea id="rawResponse" rows="10" cols="50" readonly></textarea>
+    </div>
 
     <script src="expand.js"></script>
 </body>

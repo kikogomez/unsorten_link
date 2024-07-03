@@ -49,15 +49,22 @@ input[type="button"]:hover {
     text-align: center;
     border-radius: 5px;
 }
+.textarea-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Asegura que el contenido esté alineado a la izquierda */
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px; /* Ajusta el margen superior si es necesario */
+}
 .api-raw-label {
     font-size: 0.9em;
     color: #888;
     font-style: italic;
-    margin-top: 20px;
-    align-self: flex-start;
+    margin-bottom: 5px; /* Ajusta el margen inferior del label */
 }
 #rawResponse {
     width: 100%;
     max-width: 300px;
+    margin-top: 5px; 
 }
-
